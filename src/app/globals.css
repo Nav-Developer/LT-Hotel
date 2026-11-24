@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  /* LT Lodge palette (from the logo: deep maroon + gold) */
+  --brand-red: #5c0011; /* logo maroon (name kept so classes work) */
+  --brand-red-dark: #42000c;
+  --brand-red-deep: #2e0008;
+  --brand-yellow: #f5b82e; /* logo gold */
+  --brand-yellow-shadow: #c98a10;
+  --ink: #2a0509;
+  --cream: #fff8ea;
+  --blush: #f6e4c4;
+
+  /* old names kept so other pages don't break */
+  --wine-950: #1f0005;
+  --wine-900: #2e0008;
+  --wine-800: #42000c;
+  --wine-700: #5c0011;
+  --wine-600: var(--brand-red-dark);
+  --gold-400: var(--brand-yellow);
+  --copper: #d99a1e;
+  --cream-200: #f3e6c8;
+}
+
+@theme inline {
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-red-deep: var(--brand-red-deep);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-shadow: var(--brand-yellow-shadow);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-blush: var(--blush);
+
+  --color-wine-950: var(--wine-950);
+  --color-wine-800: var(--wine-800);
+  --color-wine-600: var(--wine-600);
+  --color-gold-400: var(--gold-400);
+  --color-copper: var(--copper);
+  --color-cream-200: var(--cream-200);
+
+  --font-display: var(--font-bodoni), Georgia, serif;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 3px;
+}
+
+.field {
+  flex: 1;
+  min-width: 0;
+  border-radius: 9999px;
+  background: #fff;
+  border: 1.5px solid rgba(42, 5, 9, 0.15);
+  padding: 0.875rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+  outline: none;
+}
+.field:focus {
+  border-color: var(--brand-red);
+  box-shadow: 0 0 0 3px rgba(92, 0, 17, 0.18);
+}
