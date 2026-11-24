@@ -166,6 +166,21 @@ export default function Footer() {
               />
               nk_freaky
             </a>
+            <a
+              href="https://www.naveenkumar.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-bold text-brand-yellow hover:opacity-80"
+            >
+              <Image
+                src={assets.images.website}
+                alt="Website"
+                width={16}
+                height={16}
+                className="h-4 w-4 object-contain brightness-0 invert"
+              />
+              naveenKumar.site
+            </a>
           </p>
         </div>
       </div>
