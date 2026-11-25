@@ -23,13 +23,13 @@ const fade = {
 
 const TAGS: Record<string, string> = {
   "A/C Double Room": "A/C",
-  "A/C Family Room": "A/C · Family",
-  "Group / Wedding Stay": "Groups",
+  "Bulk Room's for A/C / Non-A/C ": "A/C · Bulk",
+  // "Group / Wedding Stay": "Groups",
   "Non-A/C Room": "Budget",
 };
 
 const GOOD_TO_KNOW = [
-  { title: "Check-in", text: "From 3:00 PM. The desk is open 24 hours." },
+  { title: "Check-in", text: " The desk is open 24 hours." },
   {
     title: "Rates",
     text: "Rates vary by season and availability. Call or message to confirm.",

@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, MotionConfig } from "framer-motion";
-import { RATING, WHATSAPP_NUMBER } from "@/data/constant";
-import { ROOM_TYPES } from "@/data/menu";
+import { RATING, WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/constant";
 
 /* ---------- Door that opens onto a lit room ---------- */
 function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
@@ -155,23 +154,16 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
 }
 
 /* ---------- Hero ---------- */
-const field =
-  "w-full border-0 border-b-2 border-ink/20 bg-transparent px-0 py-2 text-sm font-semibold text-ink outline-none focus:border-brand-red";
-
 export default function HeroLodge() {
   const [open, setOpen] = useState(false);
-  const [room, setRoom] = useState(ROOM_TYPES[0]);
-  const [guests, setGuests] = useState("2");
-  const [inDate, setIn] = useState("");
-  const [outDate, setOut] = useState("");
-
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 1300);
     return () => clearTimeout(t);
   }, []);
 
-  const msg = `Hi LT Lodge, I'd like to enquire about a ${room} for ${guests} guest(s). Check-in: ${inDate || "to be decided"}, check-out: ${outDate || "to be decided"}.`;
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  const msg = "Hi LT Lodge, I'd like to enquire about a room.";
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  const callHref = `tel:${PHONE_DISPLAY.replace(/[^\d+]/g, "")}`;
 
   return (
     <MotionConfig reducedMotion="user">
@@ -182,7 +174,7 @@ export default function HeroLodge() {
             "repeating-linear-gradient(45deg, rgba(250,246,237,0.05) 0 1px, transparent 1px 36px), repeating-linear-gradient(-45deg, rgba(250,246,237,0.05) 0 1px, transparent 1px 36px)",
         }}
       >
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-48 pt-32 md:grid-cols-[1.15fr_0.85fr] md:pb-56 md:pt-40">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-[1.15fr_0.85fr] md:pb-28 md:pt-40">
           <div>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -223,6 +215,34 @@ export default function HeroLodge() {
             </motion.p>
 
             <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-8 flex flex-wrap gap-4"
+            >
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-cream px-7 py-3.5 text-center text-sm font-bold uppercase tracking-widest text-brand-red transition hover:-translate-y-0.5 hover:bg-white"
+              >
+                WhatsApp us
+              </a>
+              <a
+                href={callHref}
+                className="border-2 border-white px-7 py-3 text-center text-sm font-bold uppercase tracking-widest text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-brand-red"
+              >
+                Call now
+              </a>
+              <Link
+                href="/room"
+                className="border-2 border-brand-yellow px-7 py-3 text-center text-sm font-bold uppercase tracking-widest text-brand-yellow transition hover:-translate-y-0.5 hover:bg-brand-yellow hover:text-brand-red"
+              >
+                See rooms
+              </Link>
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
@@ -256,77 +276,6 @@ export default function HeroLodge() {
             <Door open={open} onToggle={() => setOpen((o) => !o)} />
           </motion.div>
         </div>
-
-        {/* booking bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.7 }}
-          className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6 md:pb-10"
-        >
-          <div className="mx-auto grid max-w-6xl gap-5 border-t-4 border-brand-red-deep bg-cream p-5 text-ink shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] md:grid-cols-[1.2fr_1fr_1fr_0.6fr_auto] md:items-end md:p-6">
-            <label className="text-[11px] font-bold uppercase tracking-widest text-ink/60">
-              Stay type
-              <select
-                value={room}
-                onChange={(e) => setRoom(e.target.value)}
-                className={field}
-              >
-                {ROOM_TYPES.map((r) => (
-                  <option key={r}>{r}</option>
-                ))}
-              </select>
-            </label>
-            <label className="text-[11px] font-bold uppercase tracking-widest text-ink/60">
-              Check-in (from 3 PM)
-              <input
-                type="date"
-                value={inDate}
-                onChange={(e) => setIn(e.target.value)}
-                className={field}
-              />
-            </label>
-            <label className="text-[11px] font-bold uppercase tracking-widest text-ink/60">
-              Check-out
-              <input
-                type="date"
-                value={outDate}
-                min={inDate}
-                onChange={(e) => setOut(e.target.value)}
-                className={field}
-              />
-            </label>
-            <label className="text-[11px] font-bold uppercase tracking-widest text-ink/60">
-              Guests
-              <select
-                value={guests}
-                onChange={(e) => setGuests(e.target.value)}
-                className={field}
-              >
-                {["1", "2", "3", "4", "5+"].map((g) => (
-                  <option key={g}>{g}</option>
-                ))}
-              </select>
-            </label>
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-brand-red px-7 py-3.5 text-center text-sm font-bold uppercase tracking-widest text-white transition hover:bg-brand-red-dark"
-            >
-              Enquire
-            </a>
-          </div>
-          <p className="mt-3 text-center text-xs text-white/70">
-            Opens WhatsApp with your details. Rates are confirmed by the lodge.{" "}
-            <Link
-              href="/contact"
-              className="text-brand-yellow underline underline-offset-4"
-            >
-              Other ways to reach us
-            </Link>
-          </p>
-        </motion.div>
       </section>
     </MotionConfig>
   );

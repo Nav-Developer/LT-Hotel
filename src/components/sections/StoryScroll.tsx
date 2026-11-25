@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { chapters } from "@/data/story";
+import StoryTravellers, { moveTravellers } from "./StoryTravellers";
+// import ChettinadBackdrop from "./ChettinadBackdrop";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -66,6 +68,7 @@ function ArchArt({ dark }: { dark: boolean }) {
 export default function StoryScroll() {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
+  const travellers = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -75,10 +78,16 @@ export default function StoryScroll() {
         const el = track.current;
         if (!el) return;
         const dist = () => el.scrollWidth - window.innerWidth;
+        const walk = (p: number) =>
+          moveTravellers(travellers.current, p, chapters.length);
 
         const tween = gsap.to(el, {
           x: () => -dist(),
           ease: "none",
+          // the family stays in step with the sliding rooms
+          onUpdate() {
+            walk(this.progress());
+          },
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
@@ -87,6 +96,7 @@ export default function StoryScroll() {
             scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            onRefresh: (self) => walk(self.progress),
             onUpdate: (self) =>
               gsap.set(".hall-fill", { scaleX: self.progress }),
           },
@@ -112,21 +122,25 @@ export default function StoryScroll() {
         });
 
         // content rises in as each room reaches the viewport
-        gsap.utils.toArray<HTMLElement>(".panel").forEach((p) => {
-          gsap.from(p.querySelectorAll(".rise"), {
-            y: 50,
-            opacity: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: p,
-              containerAnimation: tween,
-              start: "left 70%",
-              toggleActions: "play none none reverse",
-            },
+        // the first room is visible as soon as the page loads
+        gsap.utils
+          .toArray<HTMLElement>(".panel")
+          .slice(1)
+          .forEach((p) => {
+            gsap.from(p.querySelectorAll(".rise"), {
+              y: 50,
+              opacity: 0,
+              stagger: 0.1,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: p,
+                containerAnimation: tween,
+                start: "left 70%",
+                toggleActions: "play none none reverse",
+              },
+            });
           });
-        });
 
         // count-up stats
         gsap.utils.toArray<HTMLElement>(".stat").forEach((s) => {
@@ -148,16 +162,28 @@ export default function StoryScroll() {
               }),
           });
         });
+        walk(0);
+      });
+
+      // phones: the family walks across the bottom as you scroll down
+      mm.add("(max-width: 767px)", () => {
+        const walk = (p: number) =>
+          moveTravellers(travellers.current, p, chapters.length);
+        ScrollTrigger.create({
+          trigger: root.current,
+          start: "top top",
+          end: "bottom bottom",
+          onUpdate: (self) => walk(self.progress),
+          onRefresh: (self) => walk(self.progress),
+        });
+        walk(0);
       });
     },
     { scope: root },
   );
 
   return (
-    <section
-      ref={root}
-      className="relative overflow-hidden bg-cream md:h-screen"
-    >
+    <section ref={root} className="relative overflow-clip bg-cream md:h-screen">
       <div ref={track} className="flex flex-col md:h-full md:w-max md:flex-row">
         {chapters.map((c, i) => {
           const dark = i % 2 === 1;
@@ -167,10 +193,13 @@ export default function StoryScroll() {
           return (
             <article
               key={i}
-              className={`panel relative flex min-h-[80vh] items-center overflow-hidden px-6 py-20 md:h-full md:w-screen md:shrink-0 md:px-24 md:py-0 ${
+              className={`panel relative flex min-h-[80vh] items-center overflow-hidden px-6 pb-36 pt-20 md:h-full md:w-screen md:shrink-0 md:px-24 md:pb-48 md:pt-20 ${
                 dark ? "bg-brand-red text-white" : "bg-cream text-ink"
               }`}
             >
+              {/* traditional Chettinad mansion backdrop */}
+              {/* <ChettinadBackdrop dark={dark} /> */}
+
               <span
                 aria-hidden
                 className="bignum font-display pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 select-none text-[16rem] font-semibold italic leading-none text-transparent md:right-20 md:text-[26rem]"
@@ -250,7 +279,7 @@ export default function StoryScroll() {
                             className={`font-display text-6xl font-semibold ${dark ? "text-brand-yellow" : "text-brand-red"}`}
                           >
                             <span className="stat" data-value={s.value}>
-                              0
+                              {s.value}
                             </span>
                             {s.suffix}
                           </p>
@@ -307,6 +336,8 @@ export default function StoryScroll() {
           ))}
         </div>
       </div>
+
+      <StoryTravellers ref={travellers} />
     </section>
   );
 }

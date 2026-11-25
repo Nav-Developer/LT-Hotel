@@ -4,7 +4,7 @@ import assets from "@/assets";
 import {
   ADDRESS,
   HOURS,
-  PHONE_LANDLINE,
+  // PHONE_LANDLINE,
   PHONE_MOBILE,
   WHATSAPP_NUMBER,
   MAPS_URL,
@@ -14,14 +14,13 @@ import {
 } from "@/data/constant";
 import { ROOM_TYPES } from "@/data/menu";
 
-const heading =
-  "mb-5 text-xs font-bold uppercase tracking-[0.25em] text-brand-yellow";
+const heading = "mb-5 text-xl font-semibold text-brand-yellow";
 const linkCls = "text-white/80 transition hover:text-brand-yellow";
 const telHref = (n: string) => `tel:${n.replace(/\s/g, "")}`;
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-red-deep text-white">
+    <footer className="bg-brand-red-deep font-display text-white">
       <div className="h-1 bg-brand-red" />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:px-10 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr]">
@@ -62,7 +61,7 @@ export default function Footer() {
           <ul className="space-y-3">
             {[
               ["Home", "/"],
-              ["Rooms", "/rooms"],
+              ["Rooms", "/room"],
               ["About", "/about"],
               ["Contact", "/contact"],
             ].map(([l, h]) => (
@@ -81,7 +80,7 @@ export default function Footer() {
           <ul className="space-y-3">
             {ROOM_TYPES.map((r) => (
               <li key={r}>
-                <Link href="/rooms" className={linkCls}>
+                <Link href="/room" className={linkCls}>
                   {r}
                 </Link>
               </li>
@@ -96,12 +95,12 @@ export default function Footer() {
             <p>{ADDRESS}</p>
             <p>{HOURS}</p>
             <p className="space-y-1">
-              <a
+              {/* <a
                 href={telHref(PHONE_LANDLINE)}
                 className="block font-bold hover:text-brand-yellow"
               >
                 {PHONE_LANDLINE}
-              </a>
+              </a> */}
               <a
                 href={telHref(PHONE_MOBILE)}
                 className="block font-bold hover:text-brand-yellow"
@@ -174,13 +173,17 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-bold text-brand-yellow hover:opacity-80"
             >
-              <Image
-                src={assets.images.website}
-                alt="Website"
-                width={16}
-                height={16}
-                className="h-4 w-4 object-contain brightness-0 invert"
-              />
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="h-4 w-4 text-white"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" />
+              </svg>
               naveenKumar.site
             </a>
           </p>

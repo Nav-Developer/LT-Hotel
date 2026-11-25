@@ -18,7 +18,7 @@ import {
   HOURS,
   MAPS_URL,
   PHONE_DISPLAY,
-  PHONE_LANDLINE,
+  // PHONE_LANDLINE,
   RECIPIENT_NAME,
   WHATSAPP_NUMBER,
 } from "@/data/constant";
@@ -138,12 +138,12 @@ export default function ContactPage() {
                 >
                   {PHONE_DISPLAY}
                 </a>
-                <a
+                {/* <a
                   href={`tel:${PHONE_LANDLINE.replace(/\s/g, "")}`}
                   className="block text-ink/75 underline-offset-4 hover:underline"
                 >
                   {PHONE_LANDLINE} (landline)
-                </a>
+                </a> */}
               </span>
             </li>
             <li className="flex gap-4">

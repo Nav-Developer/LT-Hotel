@@ -23,8 +23,8 @@ export const MENU: MenuItem[] = [
     tone: "#FFE9A8",
   },
   {
-    id: "ac-family",
-    name: "A/C Family Room",
+    id: "ac-bulk",
+    name: "Bulk Rooms for A/C and Non-A/C",
     note: "Families, extra bed on request",
     category: "Rooms",
     emoji: "👨‍👩‍👧",
@@ -38,14 +38,14 @@ export const MENU: MenuItem[] = [
     emoji: "🌿",
     tone: "#DCEBC8",
   },
-  {
-    id: "group-wedding",
-    name: "Group / Wedding Stay",
-    note: "Multiple rooms, call for rates",
-    category: "Groups",
-    emoji: "💐",
-    tone: "#E5DAF5",
-  },
+  // {
+  //   id: "group-wedding",
+  //   name: "Group / Wedding Stay",
+  //   note: "Multiple rooms, call for rates",
+  //   category: "Groups",
+  //   emoji: "💐",
+  //   tone: "#E5DAF5",
+  // },
 ];
 
 export const ROOM_TYPES = MENU.map((m) => m.name);

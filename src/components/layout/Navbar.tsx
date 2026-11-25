@@ -31,6 +31,7 @@ const links = [
   { label: "Home", href: "/" },
   { label: "Rooms", href: "/room" },
   { label: "About", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 const tel = `tel:${PHONE_MOBILE.replace(/\s/g, "")}`;

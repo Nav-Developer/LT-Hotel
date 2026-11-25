@@ -17,10 +17,31 @@ import {
 const { lodge, lodge2, room, room2, bathroom, parking, parking2 } =
   assets.images;
 
+const ESTABLISHED = 1997;
+const YEARS = 29; // 2026 - 1997, update every year
+
 const STORY = [
-  "LT Lodge is a budget A/C lodge on 100 Feet Road in Karaikudi, right beside the New Bus Stand. We keep things simple: clean rooms, polite staff and no surprises.",
-  "Guests tell us again and again that they notice the spotless rooms and bathrooms, the helpful staff and the good value for the price. We take that as our job description.",
-  "Whether it is a night in transit, a family holiday or a wedding week, we will find a room that fits. Call us any time, we are open 24 hours.",
+  `Located in Karaikudi, the heart of the Chettinad region, ${HOTEL_NAME} carries forward the warmth, tradition and hospitality that define Chettinad culture. Since ${ESTABLISHED}, we have been welcoming travellers with comfort, care and a genuine spirit of hospitality.`,
+  "For nearly three decades, our commitment has remained the same: to offer a welcoming atmosphere, reliable service and comfort for every guest. Whether you are here for business, family, tourism or to explore the heritage of Chettinad, we strive to make every stay pleasant and memorable.",
+  "You will find us on 100 Feet Road, right beside the New Bus Stand, with clean A/C rooms and polite staff, open 24 hours.",
+];
+
+const MILESTONES = [
+  {
+    value: `${ESTABLISHED}`,
+    title: "Established",
+    text: "The year we began welcoming travellers in Karaikudi.",
+  },
+  {
+    value: `${YEARS}`,
+    title: "Years of hospitality",
+    text: "A journey of serving guests with comfort and care.",
+  },
+  {
+    value: "3rd",
+    title: "Generation of business",
+    text: "A business legacy carried forward across three generations.",
+  },
 ];
 
 const CLEAN_POINTS = [
@@ -108,28 +129,26 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="inline-block rounded-full bg-brand-red px-4 py-1.5 text-sm font-semibold text-white"
               >
-                About {HOTEL_NAME}
+                Established {ESTABLISHED} • Karaikudi
               </motion.p>
 
               <h1 className="font-display mt-4 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-ink md:text-7xl">
-                {["a clean, calm stay", "in the heart of Karaikudi."].map(
-                  (l, k) => (
-                    <span key={l} className="block overflow-hidden pb-[0.1em]">
-                      <motion.span
-                        className={`block ${k === 1 ? "italic text-brand-red" : ""}`}
-                        initial={{ y: "110%" }}
-                        animate={{ y: 0 }}
-                        transition={{
-                          delay: 0.12 * k + 0.1,
-                          duration: 0.7,
-                          ease: [0.76, 0, 0.24, 1],
-                        }}
-                      >
-                        {l}
-                      </motion.span>
-                    </span>
-                  ),
-                )}
+                {["a legacy of", "Chettinad hospitality."].map((l, k) => (
+                  <span key={l} className="block overflow-hidden pb-[0.1em]">
+                    <motion.span
+                      className={`block ${k === 1 ? "italic text-brand-red" : ""}`}
+                      initial={{ y: "110%" }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        delay: 0.12 * k + 0.1,
+                        duration: 0.7,
+                        ease: [0.76, 0, 0.24, 1],
+                      }}
+                    >
+                      {l}
+                    </motion.span>
+                  </span>
+                ))}
               </h1>
 
               <motion.p
@@ -138,8 +157,9 @@ export default function AboutPage() {
                 transition={{ delay: 0.7 }}
                 className="mt-6 max-w-xl text-lg leading-relaxed text-ink/80"
               >
-                Simple A/C rooms, polite staff and a short walk from the New Bus
-                Stand. Open 24 hours.
+                A third-generation business, welcoming travellers to Karaikudi
+                since {ESTABLISHED} with comfortable A/C rooms and caring
+                service. Open 24 hours.
               </motion.p>
             </div>
 
@@ -202,7 +222,7 @@ export default function AboutPage() {
                 className={`absolute -bottom-6 left-6 right-6 rounded-3xl bg-white px-5 py-3 ${SOFT_SHADOW}`}
               >
                 <p className="font-display text-xl font-semibold text-ink">
-                  {HOTEL_NAME}
+                  {HOTEL_NAME} · Since {ESTABLISHED}
                 </p>
                 <p className="text-sm text-ink/70">
                   Google {RATING.google} · Justdial {RATING.justdial}
@@ -258,8 +278,46 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* LEGACY */}
+        <PopBackground variant="blush" className="py-20 md:py-28">
+          <div className="relative z-10 mx-auto max-w-7xl px-6">
+            <motion.div {...fade} className="max-w-2xl">
+              <p className={pill}>Our legacy</p>
+              <h2 className={h2}>rooted in Chettinad.</h2>
+              <p className="mt-5 text-base leading-relaxed text-ink/85 md:text-lg">
+                Chettinad is renowned for its rich cultural heritage,
+                architectural beauty, traditional values and distinctive
+                hospitality. Inspired by this heritage, {HOTEL_NAME} has built a{" "}
+                {YEARS}-year journey of welcoming guests, serving travellers and
+                creating a comfortable place to stay in Karaikudi.
+              </p>
+            </motion.div>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {MILESTONES.map((m, k) => (
+                <motion.div
+                  key={m.title}
+                  {...fade}
+                  transition={{ ...fade.transition, delay: k * 0.1 }}
+                  className={`rounded-3xl bg-white p-7 ${SOFT_SHADOW}`}
+                >
+                  <p className="font-display text-5xl font-semibold text-brand-red">
+                    {m.value}
+                  </p>
+                  <h3 className="font-display mt-3 text-2xl font-semibold leading-tight text-ink">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/75 md:text-base">
+                    {m.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </PopBackground>
+
         {/* CLEAN ROOMS + BATHROOM */}
-        <section className="bg-cream px-6 pb-20 md:pb-28">
+        <section className="bg-cream px-6 py-20 md:py-28">
           <div className="mx-auto max-w-7xl">
             <motion.div {...fade} className="max-w-2xl">
               <p className={pill}>See for yourself</p>

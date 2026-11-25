@@ -4,10 +4,10 @@ export const RECIPIENT_NAME = "LT Lodge";
 
 export const ADDRESS =
   "No. 162, 100 Feet Road, Aruna Nagar, near Kannadasan Manimandapam & New Bus Stand, Karaikudi, Tamil Nadu 630001";
-export const HOURS = "Open 24 hours · Check-in from 3:00 PM";
+export const HOURS = "Open 24 hours ";
 
 export const PHONE_LANDLINE = "+91 4565 238 792";
-export const PHONE_MOBILE = "+91 73958 44710";
+export const PHONE_MOBILE = "+91 94874 04558";
 export const PHONE_DISPLAY = PHONE_MOBILE;
 export const WHATSAPP_NUMBER = "919487404558";
 

@@ -56,7 +56,7 @@ export const chapters: Chapter[] = [
   {
     tag: "Book today",
     title: "call us, we're always open",
-    text: "Open 24 hours. Check-in from 3:00 PM. Call to confirm rates and availability.",
+    text: "Open 24 hours. Call to confirm rates and availability.",
     stats: [
       { label: "hours open every day", value: 24 },
       { label: "Justdial rating (out of 5)", value: 4, suffix: ".0" },
