@@ -22,10 +22,10 @@ import CallIcon from "@mui/icons-material/Call";
 import assets from "@/assets";
 import { PHONE_MOBILE } from "@/data/constant";
 
-const MAROON = "#5C0011";
-const MAROON_DARK = "#2E0008";
-const GOLD = "#F5B82E";
-const CREAM = "#FFF8EA";
+const RED = "#9E1B26";
+const RED_DARK = "#7D1520";
+const CREAM = "#FAF6ED";
+const INK = "#2A0A0D";
 
 const links = [
   { label: "Home", href: "/" },
@@ -36,12 +36,12 @@ const links = [
 const tel = `tel:${PHONE_MOBILE.replace(/\s/g, "")}`;
 
 const callSx = {
-  bgcolor: GOLD,
-  color: MAROON_DARK,
+  bgcolor: RED,
+  color: CREAM,
   fontWeight: 700,
   borderRadius: 0,
   px: 2.5,
-  "&:hover": { bgcolor: "#fff" },
+  "&:hover": { bgcolor: RED_DARK },
 };
 
 function Logo({ h }: { h: number }) {
@@ -71,9 +71,9 @@ export default function Navbar() {
         position="fixed"
         elevation={0}
         sx={{
-          bgcolor: MAROON,
-          color: CREAM,
-          borderBottom: `2px solid ${GOLD}`,
+          bgcolor: CREAM,
+          color: INK,
+          borderBottom: `2px solid ${RED}`,
         }}
       >
         <Toolbar
@@ -105,15 +105,15 @@ export default function Navbar() {
                   href={l.href}
                   disableRipple
                   sx={{
-                    color: active ? GOLD : CREAM,
+                    color: active ? RED : INK,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     fontSize: "0.78rem",
                     fontWeight: 600,
                     px: 2,
                     borderRadius: 0,
-                    borderBottom: `2px solid ${active ? GOLD : "transparent"}`,
-                    "&:hover": { color: GOLD, bgcolor: "transparent" },
+                    borderBottom: `2px solid ${active ? RED : "transparent"}`,
+                    "&:hover": { color: RED, bgcolor: "transparent" },
                   }}
                 >
                   {l.label}
@@ -134,8 +134,8 @@ export default function Navbar() {
             onClick={() => setOpen(true)}
             sx={{
               display: { xs: "inline-flex", md: "none" },
-              color: GOLD,
-              border: `1px solid ${GOLD}`,
+              color: RED,
+              border: `1px solid ${RED}`,
               borderRadius: 0,
             }}
           >
@@ -153,8 +153,8 @@ export default function Navbar() {
             sx: {
               width: "80vw",
               maxWidth: 340,
-              bgcolor: MAROON_DARK,
-              color: CREAM,
+              bgcolor: CREAM,
+              color: INK,
               display: "flex",
               flexDirection: "column",
             },
@@ -174,12 +174,12 @@ export default function Navbar() {
           <IconButton
             aria-label="close menu"
             onClick={() => setOpen(false)}
-            sx={{ color: GOLD }}
+            sx={{ color: RED }}
           >
             <CloseIcon />
           </IconButton>
         </Box>
-        <Divider sx={{ borderColor: "rgba(245,184,46,0.4)" }} />
+        <Divider sx={{ borderColor: "rgba(158,27,38,0.35)" }} />
         <List sx={{ px: 2.5 }}>
           {links.map((l, i) => (
             <ListItemButton
@@ -190,12 +190,12 @@ export default function Navbar() {
               sx={{
                 px: 0,
                 py: 2,
-                borderBottom: "1px solid rgba(255,248,234,0.12)",
+                borderBottom: "1px solid rgba(158,27,38,0.15)",
               }}
             >
               <Box
                 sx={{
-                  color: GOLD,
+                  color: RED,
                   fontSize: "0.75rem",
                   mr: 2,
                   fontWeight: 700,
@@ -211,7 +211,7 @@ export default function Navbar() {
                       fontFamily: "var(--font-bodoni), serif",
                       fontSize: "1.6rem",
                       fontWeight: 600,
-                      color: pathname === l.href ? GOLD : CREAM,
+                      color: pathname === l.href ? RED : INK,
                     },
                   },
                 }}

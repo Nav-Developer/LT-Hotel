@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* LT Lodge palette (from the logo: deep maroon + gold) */
-  --brand-red: #5c0011; /* logo maroon (name kept so classes work) */
-  --brand-red-dark: #42000c;
-  --brand-red-deep: #2e0008;
-  --brand-yellow: #f5b82e; /* logo gold */
-  --brand-yellow-shadow: #c98a10;
-  --ink: #2a0509;
-  --cream: #fff8ea;
-  --blush: #f6e4c4;
+  /* LT Hotel palette (from the logo: luxury red + warm cream) */
+  --brand-red: #9e1b26; /* primary luxury red */
+  --brand-red-dark: #7d1520;
+  --brand-red-deep: #5a0f17;
+  --brand-yellow: #faf6ed; /* name kept so classes work; now cream accent */
+  --brand-yellow-shadow: #e6dcc6;
+  --ink: #2a0a0d;
+  --cream: #faf6ed;
+  --blush: #f3e6dd;
 
   /* old names kept so other pages don't break */
-  --wine-950: #1f0005;
-  --wine-900: #2e0008;
-  --wine-800: #42000c;
-  --wine-700: #5c0011;
+  --wine-950: #3a0a0f;
+  --wine-900: #5a0f17;
+  --wine-800: #7d1520;
+  --wine-700: #9e1b26;
   --wine-600: var(--brand-red-dark);
   --gold-400: var(--brand-yellow);
-  --copper: #d99a1e;
-  --cream-200: #f3e6c8;
+  --copper: #d9868d;
+  --cream-200: #f1e9d8;
 }
 
 @theme inline {
@@ -49,7 +49,7 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--brand-yellow);
+  outline: 3px solid var(--brand-red);
   outline-offset: 3px;
 }
 
@@ -58,7 +58,7 @@ body {
   min-width: 0;
   border-radius: 9999px;
   background: #fff;
-  border: 1.5px solid rgba(42, 5, 9, 0.15);
+  border: 1.5px solid rgba(42, 10, 13, 0.15);
   padding: 0.875rem 1.25rem;
   font-size: 0.875rem;
   color: var(--ink);
@@ -66,5 +66,5 @@ body {
 }
 .field:focus {
   border-color: var(--brand-red);
-  box-shadow: 0 0 0 3px rgba(92, 0, 17, 0.18);
+  box-shadow: 0 0 0 3px rgba(158, 27, 38, 0.18);
 }

@@ -24,13 +24,13 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
             <path d={ARCH} />
           </clipPath>
           <radialGradient id="glow" cx="50%" cy="70%" r="75%">
-            <stop offset="0" stopColor="#FFE9A8" />
-            <stop offset="0.55" stopColor="#F5B82E" />
-            <stop offset="1" stopColor="#8A4A00" />
+            <stop offset="0" stopColor="#FFFDF6" />
+            <stop offset="0.55" stopColor="#F3D9CF" />
+            <stop offset="1" stopColor="#9E1B26" />
           </radialGradient>
         </defs>
 
-        <path d={ARCH} fill="#1b0004" />
+        <path d={ARCH} fill="#3a0a0f" />
         {/* the room */}
         <g clipPath="url(#arch)">
           <rect x="40" y="40" width="280" height="410" fill="url(#glow)" />
@@ -39,15 +39,15 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
             y="395"
             width="280"
             height="55"
-            fill="#5c0011"
+            fill="#7d1520"
             opacity="0.55"
           />
           {/* bed */}
-          <rect x="92" y="372" width="176" height="34" rx="8" fill="#5c0011" />
-          <rect x="88" y="330" width="14" height="76" rx="5" fill="#2e0008" />
-          <rect x="258" y="348" width="14" height="58" rx="5" fill="#2e0008" />
-          <rect x="108" y="356" width="56" height="20" rx="9" fill="#FFF8EA" />
-          <rect x="172" y="356" width="56" height="20" rx="9" fill="#FFF8EA" />
+          <rect x="92" y="372" width="176" height="34" rx="8" fill="#9e1b26" />
+          <rect x="88" y="330" width="14" height="76" rx="5" fill="#5a0f17" />
+          <rect x="258" y="348" width="14" height="58" rx="5" fill="#5a0f17" />
+          <rect x="108" y="356" width="56" height="20" rx="9" fill="#FAF6ED" />
+          <rect x="172" y="356" width="56" height="20" rx="9" fill="#FAF6ED" />
           {/* window */}
           <rect
             x="150"
@@ -55,12 +55,12 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
             width="60"
             height="70"
             rx="4"
-            fill="#2e0008"
+            fill="#5a0f17"
             opacity="0.35"
           />
           <path
             d="M180 150 V220 M150 185 H210"
-            stroke="#FFE9A8"
+            stroke="#FAF6ED"
             strokeWidth="3"
           />
         </g>
@@ -72,14 +72,14 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
             style={{ ...leaf, transformOrigin: "left" }}
           >
-            <rect x="40" y="40" width="141" height="410" fill="#42000c" />
+            <rect x="40" y="40" width="141" height="410" fill="#7d1520" />
             <rect
               x="58"
               y="210"
               width="105"
               height="100"
               fill="none"
-              stroke="#F5B82E"
+              stroke="#FAF6ED"
               strokeWidth="2"
               opacity="0.7"
             />
@@ -89,7 +89,7 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
               width="105"
               height="90"
               fill="none"
-              stroke="#F5B82E"
+              stroke="#FAF6ED"
               strokeWidth="2"
               opacity="0.7"
             />
@@ -99,14 +99,14 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
             transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
             style={{ ...leaf, transformOrigin: "right" }}
           >
-            <rect x="179" y="40" width="141" height="410" fill="#42000c" />
+            <rect x="179" y="40" width="141" height="410" fill="#7d1520" />
             <rect
               x="197"
               y="210"
               width="105"
               height="100"
               fill="none"
-              stroke="#F5B82E"
+              stroke="#FAF6ED"
               strokeWidth="2"
               opacity="0.7"
             />
@@ -116,31 +116,31 @@ function Door({ open, onToggle }: { open: boolean; onToggle: () => void }) {
               width="105"
               height="90"
               fill="none"
-              stroke="#F5B82E"
+              stroke="#FAF6ED"
               strokeWidth="2"
               opacity="0.7"
             />
           </motion.g>
         </g>
 
-        <path d={ARCH} fill="none" stroke="#F5B82E" strokeWidth="5" />
+        <path d={ARCH} fill="none" stroke="#FAF6ED" strokeWidth="5" />
         <path
           d="M24 440 H336"
-          stroke="#F5B82E"
+          stroke="#FAF6ED"
           strokeWidth="5"
           strokeLinecap="round"
         />
 
         {/* room number plate */}
         <motion.g animate={{ opacity: open ? 0 : 1 }}>
-          <rect x="148" y="158" width="64" height="36" rx="4" fill="#F5B82E" />
+          <rect x="148" y="158" width="64" height="36" rx="4" fill="#FAF6ED" />
           <text
             x="180"
             y="183"
             textAnchor="middle"
             fontSize="20"
             fontWeight="700"
-            fill="#2e0008"
+            fill="#5a0f17"
             style={{ fontFamily: "var(--font-bodoni), serif" }}
           >
             101
@@ -176,10 +176,10 @@ export default function HeroLodge() {
   return (
     <MotionConfig reducedMotion="user">
       <section
-        className="relative overflow-hidden bg-brand-red-deep text-white"
+        className="relative overflow-hidden bg-brand-red text-white"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(45deg, rgba(245,184,46,0.06) 0 1px, transparent 1px 36px), repeating-linear-gradient(-45deg, rgba(245,184,46,0.06) 0 1px, transparent 1px 36px)",
+            "repeating-linear-gradient(45deg, rgba(250,246,237,0.05) 0 1px, transparent 1px 36px), repeating-linear-gradient(-45deg, rgba(250,246,237,0.05) 0 1px, transparent 1px 36px)",
         }}
       >
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-48 pt-32 md:grid-cols-[1.15fr_0.85fr] md:pb-56 md:pt-40">
@@ -264,7 +264,7 @@ export default function HeroLodge() {
           transition={{ delay: 1, duration: 0.7 }}
           className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6 md:pb-10"
         >
-          <div className="mx-auto grid max-w-6xl gap-5 border-t-4 border-brand-yellow bg-cream p-5 text-ink shadow-[0_24px_60px_-20px_rgba(0,0,0,0.8)] md:grid-cols-[1.2fr_1fr_1fr_0.6fr_auto] md:items-end md:p-6">
+          <div className="mx-auto grid max-w-6xl gap-5 border-t-4 border-brand-red-deep bg-cream p-5 text-ink shadow-[0_24px_60px_-20px_rgba(0,0,0,0.6)] md:grid-cols-[1.2fr_1fr_1fr_0.6fr_auto] md:items-end md:p-6">
             <label className="text-[11px] font-bold uppercase tracking-widest text-ink/60">
               Stay type
               <select
@@ -317,7 +317,7 @@ export default function HeroLodge() {
               Enquire
             </a>
           </div>
-          <p className="mt-3 text-center text-xs text-white/60">
+          <p className="mt-3 text-center text-xs text-white/70">
             Opens WhatsApp with your details. Rates are confirmed by the lodge.{" "}
             <Link
               href="/contact"

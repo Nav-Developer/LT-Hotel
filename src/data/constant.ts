@@ -9,7 +9,7 @@ export const HOURS = "Open 24 hours · Check-in from 3:00 PM";
 export const PHONE_LANDLINE = "+91 4565 238 792";
 export const PHONE_MOBILE = "+91 73958 44710";
 export const PHONE_DISPLAY = PHONE_MOBILE;
-export const WHATSAPP_NUMBER = "917395844710";
+export const WHATSAPP_NUMBER = "919487404558";
 
 // TODO: replace with the real hotel email / Instagram / Maps link
 export const CONTACT_EMAIL = "ltlodge@example.com";

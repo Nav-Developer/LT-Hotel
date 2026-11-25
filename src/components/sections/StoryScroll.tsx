@@ -10,7 +10,7 @@ import { chapters } from "@/data/story";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 function ArchArt({ dark }: { dark: boolean }) {
-  const c = dark ? "#F5B82E" : "#5C0011";
+  const c = dark ? "#FAF6ED" : "#9E1B26";
   return (
     <svg viewBox="0 0 280 360" className="w-full" fill="none" aria-hidden>
       <path
@@ -168,14 +168,14 @@ export default function StoryScroll() {
             <article
               key={i}
               className={`panel relative flex min-h-[80vh] items-center overflow-hidden px-6 py-20 md:h-full md:w-screen md:shrink-0 md:px-24 md:py-0 ${
-                dark ? "bg-brand-red-deep text-white" : "bg-cream text-ink"
+                dark ? "bg-brand-red text-white" : "bg-cream text-ink"
               }`}
             >
               <span
                 aria-hidden
                 className="bignum font-display pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 select-none text-[16rem] font-semibold italic leading-none text-transparent md:right-20 md:text-[26rem]"
                 style={{
-                  WebkitTextStroke: `2px ${dark ? "rgba(245,184,46,0.22)" : "rgba(92,0,17,0.14)"}`,
+                  WebkitTextStroke: `2px ${dark ? "rgba(250,246,237,0.2)" : "rgba(158,27,38,0.16)"}`,
                 }}
               >
                 {num}
@@ -184,7 +184,9 @@ export default function StoryScroll() {
               <div className="relative z-10 grid w-full max-w-6xl items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
                 <div>
                   <p className="rise inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em]">
-                    <span className="bg-brand-yellow px-3 py-1.5 text-ink">
+                    <span
+                      className={`px-3 py-1.5 ${dark ? "bg-brand-yellow text-brand-red" : "bg-brand-red text-white"}`}
+                    >
                       Room {num}
                     </span>
                     <span
@@ -220,7 +222,7 @@ export default function StoryScroll() {
                       {c.points.map((p) => (
                         <div
                           key={p.title}
-                          className={`rise border-t-4 border-brand-yellow p-4 ${dark ? "bg-white/5" : "bg-white"}`}
+                          className={`rise border-t-4 p-4 ${dark ? "border-brand-yellow bg-white/10" : "border-brand-red bg-white"}`}
                         >
                           <span
                             className={`text-[11px] font-bold uppercase tracking-widest ${dark ? "text-brand-yellow" : "text-brand-red"}`}
@@ -244,13 +246,17 @@ export default function StoryScroll() {
                     <div className="mt-8 flex flex-wrap gap-8">
                       {c.stats.map((s) => (
                         <div key={s.label} className="rise">
-                          <p className="font-display text-6xl font-semibold text-brand-yellow">
+                          <p
+                            className={`font-display text-6xl font-semibold ${dark ? "text-brand-yellow" : "text-brand-red"}`}
+                          >
                             <span className="stat" data-value={s.value}>
                               0
                             </span>
                             {s.suffix}
                           </p>
-                          <p className="mt-1 text-xs font-bold uppercase tracking-widest text-white/70">
+                          <p
+                            className={`mt-1 text-xs font-bold uppercase tracking-widest ${dark ? "text-white/70" : "text-ink/70"}`}
+                          >
                             {s.label}
                           </p>
                         </div>
@@ -262,7 +268,9 @@ export default function StoryScroll() {
                 {hasArt && (
                   <div className="rise mx-auto w-full max-w-[16rem] md:max-w-xs">
                     {c.image ? (
-                      <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] border-4 border-brand-yellow">
+                      <div
+                        className={`relative aspect-[4/5] overflow-hidden rounded-t-[999px] border-4 ${dark ? "border-brand-yellow" : "border-brand-red"}`}
+                      >
                         <Image
                           src={c.image}
                           alt={c.title}
@@ -284,12 +292,12 @@ export default function StoryScroll() {
 
       {/* hallway progress */}
       <div className="pointer-events-none absolute inset-x-6 bottom-6 z-20 hidden md:inset-x-24 md:block">
-        <div className="relative h-0.5 bg-white/30 mix-blend-difference">
-          <div className="hall-fill h-full origin-left scale-x-0 bg-brand-yellow" />
+        <div className="relative h-0.5 bg-ink/20">
+          <div className="hall-fill h-full origin-left scale-x-0 bg-ink" />
           {chapters.map((_, i) => (
             <span
               key={i}
-              className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-yellow px-1.5 py-0.5 text-[10px] font-bold text-ink"
+              className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 bg-ink px-1.5 py-0.5 text-[10px] font-bold text-brand-yellow"
               style={{
                 left: `${(i / Math.max(chapters.length - 1, 1)) * 100}%`,
               }}

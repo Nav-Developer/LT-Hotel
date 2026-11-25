@@ -22,7 +22,7 @@ const telHref = (n: string) => `tel:${n.replace(/\s/g, "")}`;
 export default function Footer() {
   return (
     <footer className="bg-brand-red-deep text-white">
-      <div className="h-1 bg-brand-yellow" />
+      <div className="h-1 bg-brand-red" />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:px-10 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr]">
         {/* BRAND */}
@@ -30,15 +30,17 @@ export default function Footer() {
           <Link
             href="/"
             aria-label="LT Lodge home"
-            className="relative block h-24 w-36"
+            className="inline-block bg-cream p-3"
           >
-            <Image
-              src={assets.images.logo}
-              alt="LT Lodge Hotel"
-              fill
-              sizes="144px"
-              className="object-contain object-left"
-            />
+            <span className="relative block h-16 w-28">
+              <Image
+                src={assets.images.logo}
+                alt="LT Lodge Hotel"
+                fill
+                sizes="112px"
+                className="object-contain"
+              />
+            </span>
           </Link>
           <p className="mt-5 max-w-sm leading-relaxed text-white/80">
             A clean, friendly A/C lodge beside the New Bus Stand in Karaikudi.
@@ -119,7 +121,7 @@ export default function Footer() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-brand-yellow px-5 py-2.5 text-sm font-bold text-ink transition hover:bg-white"
+              className="bg-brand-yellow px-5 py-2.5 text-sm font-bold text-brand-red transition hover:bg-white"
             >
               Get directions
             </a>
@@ -127,7 +129,7 @@ export default function Footer() {
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-brand-yellow px-5 py-2.5 text-sm font-bold text-brand-yellow transition hover:bg-brand-yellow hover:text-ink"
+              className="border border-brand-yellow px-5 py-2.5 text-sm font-bold text-brand-yellow transition hover:bg-brand-yellow hover:text-brand-red"
             >
               WhatsApp
             </a>
